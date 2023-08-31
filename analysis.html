@@ -1,0 +1,34 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<style>
+.container-sm {
+    /* Add your custom styles here */
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+  }
+</style>
+<div class="container-sm">
+  <div class="d-flex justify-content-center">
+    <form action="{{ url_for('result')}}" method="post" class="w-100">
+      <div class="mb-3 col-sm-3">
+        <label class="form-label">Select ML Algorithm</label>
+        <select class="form-select" name="algo" aria-label="Select a course" >
+            <option selected>Select a ML Algorithm...</option>
+            <option value="Naïve Bayes">Naïve Bayes</option>
+            <option value="Logistic Regression">Logistic Regression</option>
+            <option value="Support Vector Machine">Support Vector Machine</option>
+            <option value="Random Forest classifier">Random Forest classifier</option>
+            <option value="K-Nearest Neighbour">K-Nearest Neighbour</option>
+        </select>
+    </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  <pre>{{ result }}</pre>
+  </div>
+</div>
+
+{% endblock %}

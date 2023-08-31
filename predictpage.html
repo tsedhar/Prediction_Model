@@ -1,0 +1,59 @@
+{% extends 'index.html' %}
+
+{% block main %}
+<style>
+  /* Custom CSS rules */
+  .form-group {
+    margin-bottom: 20px;
+
+  }
+
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  .container-sm {
+    /* Add your custom styles here */
+    background-color: #f2f2f2;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 20px;
+
+  }
+
+  /* Add more custom CSS rules as needed */
+</style>
+<div class="container-sm">
+  <div class="d-flex justify-content-center">
+    <form action="{{ url_for('predict')}}" method="post" class="w-100">
+      <div class="form-group col-sm-3">
+        <label for="inputAttempt" class="form-label">Number of Attempt</label>
+        <input type="number" name="num_of_prev_attempts" placeholder="any value between 0 and 6" required="required" id="inputAttempt" class="form-control" min="0" max="6" />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="inputScore" class="form-label">Average score</label>
+        <input type="number" name="average_score" placeholder="Any value between 0 and 100" required="required" id="inputScore" class="form-control" min="0" max="100" />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="inputClick" class="form-label">Total clicks</label>
+        <input type="number" name="sum_click" placeholder="any number between 1 and 3078" required="required" id="inputClick" class="form-control" min="1" max="3078" />
+      </div>
+      <div class="form-group col-sm-3">
+        <label for="inputCredits" class="form-label">Module credit</label>
+        <input type="number" name="studied_credits" placeholder="any number between 30 and 655" required="required" id="inputCredits" class="form-control" min="30" max="655" />
+      </div>
+
+      <button type="submit" class="btn btn-primary">Predict</button>
+    </form>
+
+  </div>
+
+</div>
+
+<div class="container-sm">
+  <div class="d-flex justify-content-center">
+  <p class="mt-1">{{ prediction_text }}</p>
+  </div>
+</div>
+{% endblock %}
